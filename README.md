@@ -11,5 +11,6 @@ Static marketing site for TetherScript at `script.codetether.run`.
 ## Deploy
 
 ```powershell
+gcloud builds submit --project=spotlessbinco --tag us-central1-docker.pkg.dev/spotlessbinco/codetether/tetherscript-marketing-site:v1
 kubectl apply -k .
 ```
