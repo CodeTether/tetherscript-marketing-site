@@ -12,6 +12,8 @@ spec:
       labels:
         app.kubernetes.io/name: tetherscript-marketing
     spec:
+      imagePullSecrets:
+        - name: gcp-artifact-registry
       containers:
         - name: nginx
           image: us-central1-docker.pkg.dev/spotlessbinco/codetether/tetherscript-marketing-site:v1
