@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: codetether-sites
+commonLabels:
+  app.kubernetes.io/name: tetherscript-marketing
+  app.kubernetes.io/part-of: codetether-sites
+  app.kubernetes.io/managed-by: kustomize
+resources:
+  - k8s/namespace.yaml
+  - k8s/deployment.yaml
+  - k8s/service.yaml
+  - k8s/ingress.yaml
+configMapGenerator:
+  - name: tetherscript-marketing-site-content
+    files:
+      - index.html=site/index.html
+      - styles.css=site/styles.css
+  - name: tetherscript-marketing-nginx
+    files:
+      - default.conf=nginx/default.conf
+generatorOptions:
+  disableNameSuffixHash: true

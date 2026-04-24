@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TetherScript | Agent-native scripting for Rust systems</title>
+  <meta name="description" content="TetherScript is a zero-dependency scripting language for extending Rust projects with auditable, capability-scoped agent behavior.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="/">
+        <span class="mark"></span>
+        <span>TetherScript</span>
+      </a>
+      <div class="navlinks">
+        <a href="#why">Why</a>
+        <a href="#runtime">Runtime</a>
+        <a href="https://github.com/CodeTether/TetherScript">GitHub</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <p class="eyebrow">CodeTether language runtime</p>
+      <h1>Small scripts for serious Rust systems.</h1>
+      <p class="lede">
+        TetherScript lets Rust projects accept plugins, policies, validators, and agent-written behaviors without turning every change into a rebuild or every extension into a supply-chain event.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/CodeTether/TetherScript">View the language</a>
+        <a class="button secondary" href="#runtime">See the runtime model</a>
+      </div>
+    </section>
+
+    <section class="code-card" aria-label="Example TetherScript plugin">
+      <div class="window">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <pre><code>fn validate(change) {
+    if change.files.len() == 0 {
+        return err("no files changed")
+    }
+
+    if change.diff.contains("unsafe") {
+        return err("unsafe needs explicit review")
+    }
+
+    return ok("ship it")
+}</code></pre>
+    </section>
+
+    <section id="why" class="grid">
+      <article>
+        <span class="number">01</span>
+        <h2>No dependency gravity</h2>
+        <p>The runtime is designed as a zero-third-party-dependency Rust crate, so embedding it does not pull a new ecosystem into the host.</p>
+      </article>
+      <article>
+        <span class="number">02</span>
+        <h2>Agent changes stay reviewable</h2>
+        <p>Agents can edit behavior in script files while humans review a compact policy surface instead of generated Rust diffs.</p>
+      </article>
+      <article>
+        <span class="number">03</span>
+        <h2>Capabilities over ambient power</h2>
+        <p>Hosts decide what scripts can touch. Filesystem, HTTP, process, and host hooks are explicit boundaries.</p>
+      </article>
+    </section>
+
+    <section id="runtime" class="runtime">
+      <div>
+        <p class="eyebrow">Where it fits</p>
+        <h2>First-class inside CodeTether, embeddable anywhere Rust runs.</h2>
+      </div>
+      <div class="runtime-list">
+        <p><strong>Inside CodeTether:</strong> repository-local automation, policy checks, tool guards, and plugin hooks.</p>
+        <p><strong>Inside Rust products:</strong> customer-specific behavior without recompiling the host binary.</p>
+        <p><strong>Inside agent workflows:</strong> deterministic, auditable scripts that can be generated, tested, and constrained.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

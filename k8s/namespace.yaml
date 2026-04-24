@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: codetether-sites
+  labels:
+    app.kubernetes.io/part-of: codetether
+    codetether.run/namespace: sites
